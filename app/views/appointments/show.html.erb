@@ -1,0 +1,8 @@
+<h1>Appointment #<%= @appointment.id %></h1>
+
+<h3>Doctor: <%= link_to(@appointment.doctor.name, doctor_path(@appointment.doctor)) %></h3>
+
+<h3>Patient: <%= link_to(@appointment.patient.name, patient_path(@appointment.patient)) %></h3>
+
+<h3>Time: <% date = @appointment.appointment_datetime %>
+	<%= date.strftime("%B %d")%>, <%= date.year %> at <%= date.hour > 13 ? "#{date.hour - 12}:#{date.to_s[-9..-8]} pm" : "#{date.hour}:#{date.to_s[-9..-8]} am" %>

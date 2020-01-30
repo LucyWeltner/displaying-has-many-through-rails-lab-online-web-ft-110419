@@ -1,0 +1,9 @@
+<h1><%= @patient.name %></h1>
+<h2>Appointments:</h2>
+<ol>
+<% @patient.appointments.each do |appt| %>
+	<% date = appt.appointment_datetime %>
+	<li><p>Doctor: <%= link_to(appt.doctor.name, doctor_path(appt.doctor.id)) %></p>
+		<p>Time: <%= date.strftime("%B %d") %>, <%= date.year %> at <%= date.hour > 13 ? "#{date.hour - 12}:#{date.to_s[-9..-8]} pm" : "#{date.hour}:#{date.to_s[-9..-8]} am" %></p></li>
+<% end %>
+</ol>

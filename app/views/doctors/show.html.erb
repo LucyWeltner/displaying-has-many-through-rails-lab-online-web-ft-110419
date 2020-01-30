@@ -1,0 +1,11 @@
+<h1><%= @doctor.name %></h1>
+<h2>Department: <%= @doctor.department %>
+<h2>Appointments:</h2>
+<ol>
+<% @doctor.appointments.each_with_index do |appt, index| %>
+	<p><li>Appointment #<%= index+1 %></p>
+	<% date = appt.appointment_datetime %>
+	<p>Time: <%= date.strftime("%B %d") %>, <%= date.year %> at <%= date.hour > 13 ? "#{date.hour - 12}:#{date.to_s[-9..-8]} pm" : "#{date.hour}:#{date.to_s[-9..-8]} am" %></p>
+	<p>Patient: <%= link_to(appt.patient.name, patient_path(appt.patient.id)) %></p>
+</li>
+<% end %>
